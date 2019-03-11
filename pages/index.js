@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import Link from "next/link";
+import Credit from "../components/Credit";
 
 class index extends Component {
   constructor() {
@@ -8,11 +8,7 @@ class index extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <h1 />
-      </div>
-    );
+    return <Credit />;
   }
 }
 
