@@ -1,0 +1,42 @@
+@import "./variables";
+
+.roboto {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.lighter {
+  font-weight: 300;
+}
+
+.normal {
+  font-weight: normal;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.bolder {
+  font-weight: 900;
+}
+
+.white {
+  color: $white;
+}
+
+.bg-dark-gray {
+  background: $dark-gray;
+}
