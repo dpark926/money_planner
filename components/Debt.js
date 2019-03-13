@@ -10,7 +10,7 @@ import {
 import { data } from "../data/data";
 import "../styles/styles.scss";
 
-const Credit = () => {
+const Debt = () => {
   const currentMonth = data && data[data.length - 1];
   const currentBalances = [];
   let totalCreditLine = 0;
@@ -20,28 +20,62 @@ const Credit = () => {
   const previousMonth = data && data[data.length - 2];
   let previousBalance = 0;
 
-  for (let i = 0; i < currentMonth.accounts.length; i++) {
+  let totalAsset = 0;
+
+  for (let i = 0; i < currentMonth.debtAccounts.length; i++) {
     currentBalances.push({
-      account: currentMonth.accounts[i].name,
-      currentBalance: currentMonth.accounts[i].newBalance,
-      interest: currentMonth.accounts[i].interest,
-      creditLine: currentMonth.accounts[i].creditLine
+      account: currentMonth.debtAccounts[i].name,
+      currentBalance: currentMonth.debtAccounts[i].newBalance,
+      interest: currentMonth.debtAccounts[i].interest,
+      creditLine: currentMonth.debtAccounts[i].creditLine
     });
-    totalCreditLine += currentMonth.accounts[i].creditLine;
-    totalBalance += currentMonth.accounts[i].newBalance;
-    totalInterest += currentMonth.accounts[i].interest;
+    totalCreditLine += currentMonth.debtAccounts[i].creditLine;
+    totalBalance += currentMonth.debtAccounts[i].newBalance;
+    totalInterest += currentMonth.debtAccounts[i].interest;
   }
 
-  for (let i = 0; i < previousMonth.accounts.length; i++) {
-    previousBalance += previousMonth.accounts[i].newBalance;
+  for (let i = 0; i < previousMonth.debtAccounts.length; i++) {
+    previousBalance += previousMonth.debtAccounts[i].newBalance;
   }
 
-  console.log(totalBalance);
-  console.log(previousBalance);
+  for (let i = 0; i < currentMonth.assetAccounts.length; i++) {
+    totalAsset += currentMonth.assetAccounts[i].amount;
+  }
 
   return (
-    <div className="roboto">
-      <h2 className="px4">Debt Tracker</h2>
+    <div>
+      <div>
+        <h2 className="px4">Asset Tracker</h2>
+        <BarChart
+          width={700}
+          height={400}
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="month" />
+          <YAxis domain={[0, 100000]} />
+          <Tooltip />
+          <Legend />
+          <Bar
+            dataKey="assetAccounts[0].amount"
+            name="capone"
+            stackId="a"
+            fill="#aaa"
+          />
+          <Bar
+            dataKey="assetAccounts[1].amount"
+            name="360"
+            stackId="a"
+            fill="#8884d8"
+          />
+        </BarChart>
+      </div>
       <div className="flex">
         <div>
           <div className="px4">
@@ -79,25 +113,25 @@ const Credit = () => {
             <Tooltip />
             <Legend />
             <Bar
-              dataKey="accounts[0].newBalance"
+              dataKey="debtAccounts[0].newBalance"
               name="amex"
               stackId="a"
               fill="#aaa"
             />
             <Bar
-              dataKey="accounts[1].newBalance"
+              dataKey="debtAccounts[1].newBalance"
               name="chase"
               stackId="a"
               fill="#8884d8"
             />
             <Bar
-              dataKey="accounts[2]newBalance"
+              dataKey="debtAccounts[2]newBalance"
               name="bestbuy"
               stackId="a"
               fill="#82ca9d"
             />
             <Bar
-              dataKey="accounts[3].newBalance"
+              dataKey="debtAccounts[3].newBalance"
               name="capone"
               stackId="a"
               fill="#ffb3ba"
@@ -153,9 +187,9 @@ const Credit = () => {
                 12 Month
               </div>
             </div>
-            {currentBalances.map(account => {
+            {currentBalances.map((account, idx) => {
               return (
-                <h3 className="px2">{`${account.account}: $ ${
+                <h3 className="px2" key={idx}>{`${account.account}: $ ${
                   account.interest
                 }`}</h3>
               );
@@ -171,4 +205,4 @@ const Credit = () => {
   );
 };
 
-export default Credit;
+export default Debt;
