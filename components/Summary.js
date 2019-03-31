@@ -14,46 +14,46 @@ const Summary = props => {
   const COLORS = ["#FF8042", "#0088FE"];
 
   return (
-    <div className="col-12 mx4">
+    <div className="col-12">
       <div>
         <h2 className="px2">Debt Summary</h2>
         <div className="flex border-top">
-          <div className="col-6 p2 center border-bottom border-right pointer">
+          <h4 className="col-6 p2 center border-bottom border-right pointer">
             1 Month
-          </div>
-          <div className="col-6 p2 center border-bottom pointer">12 Month</div>
+          </h4>
+          <h4 className="col-6 p2 center border-bottom pointer">12 Month</h4>
         </div>
-        <div className="px2">
+        <div>
           {currentBalances.map((account, idx) => {
             return (
               <div key={idx + account}>
                 <div className="flex pt2 pb1">
-                  <div className="col-8 m0 py2 justify-center">
+                  <div className="col-9 m0 py2 justify-center">
                     <div className="flex">
-                      <h3 className="uppercase m0">{account.account}:</h3>
-                      <h3 className="normal flex-auto right-align m0">
+                      <h4 className="uppercase m0">{account.account}:</h4>
+                      <h4 className="normal flex-auto right-align m0">
                         {`$${numWithCommas(
                           Math.round(account.currentBalance)
                         )}`}{" "}
                         / $
                         {numWithCommas(account.creditLine)}
-                      </h3>
+                      </h4>
                     </div>
                     <div className="flex pt2">
                       <h5 className="m0">$</h5>
                       <h5 className="m0">[%]</h5>
                     </div>
                   </div>
-                  <div className="col-4 flex flex-column items-center">
-                    <PieChart width={80} height={80}>
+                  <div className="col-3 flex flex-column items-center">
+                    <PieChart width={60} height={50}>
                       <Pie
                         data={pieData[idx]}
-                        cx={35}
-                        cy={35}
+                        cx={23}
+                        cy={20}
                         startAngle={0}
                         endAngle={360}
-                        innerRadius={25}
-                        outerRadius={40}
+                        innerRadius={15}
+                        outerRadius={25}
                         fill="#8884d8"
                         paddingAngle={1}
                         dataKey="amt"
@@ -66,13 +66,14 @@ const Summary = props => {
                         ))}
                       </Pie>
                     </PieChart>
-                    <div>
-                      <h3 className="m0">
+                    <div className="center">
+                      <h4 className="mt1 mb0">
                         {Math.round(
                           100 * (account.currentBalance / account.creditLine)
                         )}
-                        % Usage
-                      </h3>
+                        %
+                      </h4>
+                      <h4 className="m0">Usage</h4>
                     </div>
                   </div>
                 </div>

@@ -46,21 +46,25 @@ class index extends Component {
     return (
       <div className="roboto">
         <Header />
-        <div className="flex">
-          <div>
-            <NetWorth />
-            <Debt
-              data={data}
-              totalBalance={totalBalance}
-              totalCreditLine={totalCreditLine}
-              previousBalance={previousBalance}
-            />
+        <div className="mx-auto border" style={{ width: "1024px" }}>
+          <div className="flex">
+            <div className="col-8">
+              <NetWorth
+                totalBalance={totalBalance}
+                totalCreditLine={totalCreditLine}
+                previousBalance={previousBalance}
+                totalAsset={totalAsset}
+              />
+              <Debt data={data} />
+            </div>
+            <div className="col-4">
+              <Summary
+                data={data}
+                currentBalances={currentBalances}
+                totalInterest={totalInterest}
+              />
+            </div>
           </div>
-          <Summary
-            data={data}
-            currentBalances={currentBalances}
-            totalInterest={totalInterest}
-          />
         </div>
       </div>
     );
