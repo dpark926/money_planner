@@ -18,13 +18,13 @@ const Debt = props => {
       <div className="flex">
         <div>
           <BarChart
-            width={700}
-            height={400}
+            width={650}
+            height={300}
             data={data}
             margin={{
               top: 5,
               right: 30,
-              left: 20,
+              left: 0,
               bottom: 5
             }}
           >
@@ -63,13 +63,13 @@ const Debt = props => {
       <div>
         <h2>Asset Tracker</h2>
         <BarChart
-          width={700}
-          height={400}
+          width={650}
+          height={300}
           data={data}
           margin={{
             top: 5,
             right: 30,
-            left: 20,
+            left: 0,
             bottom: 5
           }}
         >

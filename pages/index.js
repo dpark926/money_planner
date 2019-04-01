@@ -46,7 +46,7 @@ class index extends Component {
     return (
       <div className="roboto">
         <Header />
-        <div className="mx-auto border" style={{ width: "1024px" }}>
+        <div className="mx-auto py3" style={{ width: "1024px" }}>
           <div className="flex">
             <div className="col-8">
               <NetWorth
