@@ -3,23 +3,14 @@ import { numWithCommas, formatMoney } from "../utils/functions";
 const Summary = props => {
   const { currentBalances, totalInterest, interestSummaryTab } = props;
 
-  console.log(currentBalances);
-
-  const pieData = currentBalances.map((accnt, idx) => {
-    return [
-      { amt: accnt.currentBalance },
-      { amt: accnt.creditLine - accnt.currentBalance }
-    ];
-  });
-
-  const COLORS = ["#FF8042", "#0088FE"];
-
   return (
-    <div className="box-shadow ml3">
+    <div className="box-shadow rounded ml3">
       <div>
-        <h3 className="p2 border-bottom normal">Interest Summary</h3>
-        <div className="flex px2 pb1">
-          <div className="pr1">
+        <div className="p2 light-gray border-bottom">
+          <h3 className="black normal m0">Interest Summary</h3>
+        </div>
+        <div className="flex mt2 px2 pb1 justify-center">
+          <div className="pr2">
             <p
               className={`m0 h5 ${interestSummaryTab === "1M" &&
                 "border-bottom"} pointer`}
@@ -35,7 +26,6 @@ const Summary = props => {
               12M
             </p>
           </div>
-          <div className="flex-auto" />
         </div>
         {currentBalances.map((account, idx) => {
           return (
@@ -54,7 +44,9 @@ const Summary = props => {
         </div>
       </div>
       <div>
-        <h3 className="p2 m0 border-bottom normal">Credit Cards</h3>
+        <div className="p2 light-gray border-bottom">
+          <h3 className="black normal m0">Credit Cards</h3>
+        </div>
         <div>
           {currentBalances.map((account, idx) => {
             return (
@@ -75,7 +67,13 @@ const Summary = props => {
                       / $
                       {numWithCommas(account.creditLine)}
                     </h4>
-                    <div className="flex pt1 pl2">
+                    <div
+                      className={`flex pt1 pl2 ${
+                        account.currentBalance - account.previousBalance > 0
+                          ? "pink"
+                          : "green"
+                      }`}
+                    >
                       <h5 className="m0 normal">
                         ${formatMoney(
                           account.currentBalance - account.previousBalance
@@ -85,7 +83,7 @@ const Summary = props => {
                         [{" "}
                         {Math.round(
                           ((account.currentBalance - account.previousBalance) /
-                            account.currentBalance) *
+                            account.previousBalance) *
                             100
                         )}% ]
                       </h5>

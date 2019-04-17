@@ -55,12 +55,20 @@
   color: $red;
 }
 
-.light-gray {
-  color: $light-gray;
+.pink {
+  color: $pink;
+}
+
+.gray {
+  color: $gray;
 }
 
 .dark-gray {
   color: $dark-gray;
+}
+
+.light-gray {
+  color: $light-gray;
 }
 
 .bg-red {
@@ -79,12 +87,16 @@
   background: $green;
 }
 
-.bg-light-gray {
-  background: $light-gray;
+.bg-gray {
+  background: $gray;
 }
 
 .bg-dark-gray {
   background: $dark-gray;
+}
+
+.bg-light-gray {
+  background: $light-gray;
 }
 
 .border-divider {

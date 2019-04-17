@@ -40,7 +40,7 @@ const NetWorth = props => {
     <div>
       <div className="flex mb3">
         <div className="col-4 center">
-          <div className="border-divider mr1 py3 px2">
+          <div className="border-divider rounded rounded mr1 py3 px2">
             <h3 className="m0 normal">TOTAL ASSET</h3>
             <h1 className="mx0 my1 normal">
               ${numWithCommas(Math.round(props.totalAsset))}
@@ -51,7 +51,7 @@ const NetWorth = props => {
                   props.totalAsset - netWorth[netWorth.length - 2].totalAsset >
                   0
                     ? "green"
-                    : "red"
+                    : "pink"
                 }`}
               >
                 {props.totalAsset - netWorth[netWorth.length - 2].totalAsset > 0
@@ -66,11 +66,12 @@ const NetWorth = props => {
               <h4
                 className={`m0 pl1 normal ${
                   props.totalAsset - netWorth[netWorth.length - 2].totalAsset
-                    ? "red"
+                    ? "pink"
                     : "green"
                 }`}
               >
-                [{props.totalAsset - netWorth[netWorth.length - 2].totalAsset
+                [{" "}
+                {props.totalAsset - netWorth[netWorth.length - 2].totalAsset
                   ? ""
                   : "+"}
                 {Math.round(
@@ -79,13 +80,13 @@ const NetWorth = props => {
                     netWorth[netWorth.length - 2].totalAsset) *
                     100
                 )}
-                %]
+                % ]
               </h4>
             </div>
           </div>
         </div>
         <div className="col-4 center">
-          <div className="border-divider mx1 py3 px2">
+          <div className="border-divider rounded mx1 py3 px2">
             <h3 className="m0 normal">TOTAL BALANCE</h3>
             <h1 className="mx0 my1 normal">
               ${numWithCommas(Math.round(props.totalBalance))}
@@ -94,7 +95,7 @@ const NetWorth = props => {
               <h4
                 className={`m0 normal ${
                   props.totalBalance - props.previousBalance > 0
-                    ? "red"
+                    ? "pink"
                     : "green"
                 }`}
               >
@@ -106,23 +107,23 @@ const NetWorth = props => {
               <h4
                 className={`m0 pl1 normal ${
                   props.totalBalance - props.previousBalance > 0
-                    ? "red"
+                    ? "pink"
                     : "green"
                 }`}
               >
-                [{props.totalBalance - props.previousBalance > 0 ? "+" : ""}
+                [ {props.totalBalance - props.previousBalance > 0 ? "+" : ""}
                 {Math.round(
                   ((props.totalBalance - props.previousBalance) /
                     props.totalBalance) *
                     100
                 )}
-                %]
+                % ]
               </h4>
             </div>
           </div>
         </div>
         <div className="col-4 center">
-          <div className="border-divider ml1 py3 px2">
+          <div className="border-divider rounded ml1 py3 px2">
             <h3 className="m0 normal">NET WORTH</h3>
             <h1 className="mx0 my1 normal">
               ${numWithCommas(
@@ -136,7 +137,7 @@ const NetWorth = props => {
                     netWorth[netWorth.length - 2].netWorth >
                   0
                     ? "green"
-                    : "red"
+                    : "pink"
                 }`}
               >
                 {netWorth[netWorth.length - 1].netWorth -
@@ -155,11 +156,12 @@ const NetWorth = props => {
                 className={`m0 pl1 normal ${
                   netWorth[netWorth.length - 1].netWorth -
                   netWorth[netWorth.length - 2].netWorth
-                    ? "red"
+                    ? "pink"
                     : "green"
                 }`}
               >
-                [{netWorth[netWorth.length - 1].netWorth -
+                [{" "}
+                {netWorth[netWorth.length - 1].netWorth -
                 netWorth[netWorth.length - 2].netWorth
                   ? ""
                   : "+"}
@@ -169,41 +171,40 @@ const NetWorth = props => {
                     netWorth[netWorth.length - 2].netWorth) *
                     100
                 )}
-                %]
+                % ]
               </h4>
             </div>
           </div>
         </div>
       </div>
-      <div className="border">
-        <div className="py3">
-          <LineChart
-            width={700}
-            height={300}
-            data={netWorth}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 0,
-              bottom: 5
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="month" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey="netWorth"
-              stroke="#0088FE"
-              strokeWidth={2}
-              activeDot={{ r: 8 }}
-            />
-            <Line type="monotone" dataKey="totalAsset" stroke="#82ca9d" />
-            <Line type="monotone" dataKey="totalDebt" stroke="#ffb3ba" />
-          </LineChart>
-        </div>
+      <div>
+        <h3 className="normal">Net Worth</h3>
+        <LineChart
+          width={700}
+          height={300}
+          data={netWorth}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 0,
+            bottom: 5
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="month" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line
+            type="monotone"
+            dataKey="netWorth"
+            stroke="#0088FE"
+            strokeWidth={2}
+            activeDot={{ r: 8 }}
+          />
+          <Line type="monotone" dataKey="totalAsset" stroke="#82ca9d" />
+          <Line type="monotone" dataKey="totalDebt" stroke="#ffb3ba" />
+        </LineChart>
       </div>
     </div>
   );
