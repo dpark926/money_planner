@@ -36,8 +36,6 @@ const NetWorth = props => {
     }
   }
 
-  console.log(netWorth);
-
   return (
     <div>
       <div className="flex mb3">
@@ -178,10 +176,6 @@ const NetWorth = props => {
         </div>
       </div>
       <div className="border">
-        <div className="flex border-bottom">
-          <p className="col-6 p1 m0 center border-right pointer">1 Month</p>
-          <p className="col-6 p1 m0 center pointer">12 Month</p>
-        </div>
         <div className="py3">
           <LineChart
             width={700}

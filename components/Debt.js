@@ -13,8 +13,6 @@ import "../styles/styles.scss";
 const Debt = props => {
   const { data } = props;
 
-  console.log(data);
-
   return (
     <div>
       <div className="flex">

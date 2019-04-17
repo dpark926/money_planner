@@ -8,10 +8,13 @@ import { data } from "../data/data";
 class index extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      interestSummaryTab: "1M"
+    };
   }
 
   render() {
+    const { interestSummaryTab } = this.state;
     const currentMonth = data && data[data.length - 1];
     const currentBalances = [];
     let totalCreditLine = 0;
@@ -27,6 +30,7 @@ class index extends Component {
       currentBalances.push({
         account: currentMonth.debtAccounts[i].name,
         currentBalance: currentMonth.debtAccounts[i].newBalance,
+        previousBalance: currentMonth.debtAccounts[i].previousBalance,
         interest: currentMonth.debtAccounts[i].interest,
         creditLine: currentMonth.debtAccounts[i].creditLine
       });
@@ -62,6 +66,7 @@ class index extends Component {
                 data={data}
                 currentBalances={currentBalances}
                 totalInterest={totalInterest}
+                interestSummaryTab={interestSummaryTab}
               />
             </div>
           </div>
