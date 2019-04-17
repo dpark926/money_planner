@@ -1,4 +1,3 @@
-import { PieChart, Pie, Sector, Cell } from "recharts";
 import { numWithCommas } from "../utils/functions";
 
 const Summary = props => {
@@ -40,13 +39,7 @@ const Summary = props => {
         </div>
       </div>
       <div>
-        <h3 className="px2 normal">Credit Cards</h3>
-        <div className="flex border-top">
-          <p className="col-6 p1 m0 center border-bottom border-right pointer">
-            1 Month
-          </p>
-          <p className="col-6 p1 m0 center border-bottom pointer">12 Month</p>
-        </div>
+        <h3 className="p2 m0 border-bottom normal">Credit Cards</h3>
         <div>
           {currentBalances.map((account, idx) => {
             return (
@@ -55,53 +48,56 @@ const Summary = props => {
                   <div className="col-4 m0 py2 justify-center">
                     <h4 className="uppercase m0 normal">{account.account}</h4>
                   </div>
-                  <div className="col-3 flex flex-column items-center">
-                    <PieChart width={60} height={50}>
-                      <Pie
-                        data={pieData[idx]}
-                        cx={23}
-                        cy={20}
-                        startAngle={0}
-                        endAngle={360}
-                        innerRadius={15}
-                        outerRadius={25}
-                        fill="#8884d8"
-                        paddingAngle={1}
-                        dataKey="amt"
-                      >
-                        {pieData[idx].map((entry, index) => (
-                          <Cell
-                            key={`cell-${index}`}
-                            fill={COLORS[index % COLORS.length]}
-                          />
-                        ))}
-                      </Pie>
-                    </PieChart>
-                    <div className="center">
-                      <h4 className="mt1 mb0 normal">
-                        {Math.round(
-                          100 * (account.currentBalance / account.creditLine)
-                        )}
-                        %
+                </div>
+                <div className="flex flex-column items-center">
+                  <div className="flex">
+                    <div className="col-7 m0">
+                      <h4 className="normal flex-auto right-align m0">
+                        {`$${numWithCommas(
+                          Math.round(account.currentBalance)
+                        )}`}{" "}
+                        / $
+                        {numWithCommas(account.creditLine)}
                       </h4>
-                      <h4 className="m0 normal">Usage</h4>
+                      <div className="flex pt1 justify-end">
+                        <h5 className="m0">$</h5>
+                        <h5 className="m0">[%]</h5>
+                      </div>
                     </div>
-                  </div>
-                  <div className="col-5 m0 py2">
-                    <h4 className="normal flex-auto right-align m0">
-                      {`$${numWithCommas(Math.round(account.currentBalance))}`}{" "}
-                      / $
-                      {numWithCommas(account.creditLine)}
+                    <h4 className="col-5 m0 normal">
+                      {Math.round(
+                        100 * (account.currentBalance / account.creditLine)
+                      )}
+                      % Usage
                     </h4>
-                    <div className="flex pt1 justify-end">
-                      <h5 className="m0">$</h5>
-                      <h5 className="m0">[%]</h5>
-                    </div>
+                  </div>
+                  <div className="flex col-11" style={{ height: "10px" }}>
+                    <div
+                      className="bg-red"
+                      style={{
+                        width:
+                          Math.round(
+                            100 * (account.currentBalance / account.creditLine)
+                          ) + "%",
+                        height: "10px"
+                      }}
+                    />
+                    <div
+                      className={`${
+                        Math.round(
+                          100 * (account.currentBalance / account.creditLine)
+                        ) === 0
+                          ? "bg-green"
+                          : "bg-light-gray"
+                      } flex-auto`}
+                      style={{ height: "10px" }}
+                    />
                   </div>
                 </div>
               </div>
             );
           })}
+          TOTAL
         </div>
       </div>
     </div>
