@@ -1,7 +1,12 @@
 import { numWithCommas, formatMoney } from "../utils/functions";
 
 const Summary = props => {
-  const { currentBalances, totalInterest, interestSummaryTab } = props;
+  const {
+    currentBalances,
+    totalInterest,
+    interestSummaryTab,
+    toggleMonth
+  } = props;
 
   return (
     <div className="box-shadow rounded ml3">
@@ -14,6 +19,7 @@ const Summary = props => {
             <p
               className={`m0 h5 ${interestSummaryTab === "1M" &&
                 "border-bottom"} pointer`}
+              onClick={() => toggleMonth("1M")}
             >
               1M
             </p>
@@ -22,6 +28,7 @@ const Summary = props => {
             <p
               className={`m0 h5 ${interestSummaryTab === "12M" &&
                 "border-bottom"} pointer`}
+              onClick={() => toggleMonth("12M")}
             >
               12M
             </p>

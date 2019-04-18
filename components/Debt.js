@@ -13,6 +13,15 @@ import "../styles/styles.scss";
 const Debt = props => {
   const { data } = props;
 
+  const COLORS = [
+    "#84aad8",
+    "#8884d8",
+    "#b284d8",
+    "#d88884",
+    "#ffb3ba",
+    "#82ca9d"
+  ];
+
   return (
     <div>
       <div>
@@ -33,30 +42,17 @@ const Debt = props => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar
-            dataKey="debtAccounts[0].spendings"
-            name="amex"
-            stackId="a"
-            fill="#84aad8"
-          />
-          <Bar
-            dataKey="debtAccounts[1].spendings"
-            name="chase"
-            stackId="a"
-            fill="#8884d8"
-          />
-          <Bar
-            dataKey="debtAccounts[2].spendings"
-            name="bestbuy"
-            stackId="a"
-            fill="#82ca9d"
-          />
-          <Bar
-            dataKey="debtAccounts[3].spendings"
-            name="capone"
-            stackId="a"
-            fill="#ffb3ba"
-          />
+          {data &&
+            data[data.length - 1].debtAccounts.map((accnt, idx) => {
+              return (
+                <Bar
+                  dataKey={`debtAccounts[${idx}].spendings`}
+                  name={accnt.name}
+                  stackId="a"
+                  fill={COLORS[idx]}
+                />
+              );
+            })}
         </BarChart>
       </div>
       <div>
@@ -74,33 +70,20 @@ const Debt = props => {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="month" />
-          <YAxis domain={[0, 30000]} />
+          <YAxis domain={[0, 40000]} />
           <Tooltip />
           <Legend />
-          <Bar
-            dataKey="debtAccounts[0].newBalance"
-            name="amex"
-            stackId="a"
-            fill="#84aad8"
-          />
-          <Bar
-            dataKey="debtAccounts[1].newBalance"
-            name="chase"
-            stackId="a"
-            fill="#8884d8"
-          />
-          <Bar
-            dataKey="debtAccounts[2]newBalance"
-            name="bestbuy"
-            stackId="a"
-            fill="#82ca9d"
-          />
-          <Bar
-            dataKey="debtAccounts[3].newBalance"
-            name="capone"
-            stackId="a"
-            fill="#ffb3ba"
-          />
+          {data &&
+            data[data.length - 1].debtAccounts.map((accnt, idx) => {
+              return (
+                <Bar
+                  dataKey={`debtAccounts[${idx}].newBalance`}
+                  name={accnt.name}
+                  stackId="a"
+                  fill={COLORS[idx]}
+                />
+              );
+            })}
         </BarChart>
       </div>
       <div>
@@ -118,33 +101,20 @@ const Debt = props => {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="month" />
-          <YAxis domain={[0, 350]} />
+          <YAxis domain={[0, 600]} />
           <Tooltip />
           <Legend />
-          <Bar
-            dataKey="debtAccounts[0].interest"
-            name="amex"
-            stackId="a"
-            fill="#84aad8"
-          />
-          <Bar
-            dataKey="debtAccounts[1].interest"
-            name="chase"
-            stackId="a"
-            fill="#8884d8"
-          />
-          <Bar
-            dataKey="debtAccounts[2].interest"
-            name="bestbuy"
-            stackId="a"
-            fill="#82ca9d"
-          />
-          <Bar
-            dataKey="debtAccounts[3].interest"
-            name="capone"
-            stackId="a"
-            fill="#ffb3ba"
-          />
+          {data &&
+            data[data.length - 1].debtAccounts.map((accnt, idx) => {
+              return (
+                <Bar
+                  dataKey={`debtAccounts[${idx}].interest`}
+                  name={accnt.name}
+                  stackId="a"
+                  fill={COLORS[idx]}
+                />
+              );
+            })}
         </BarChart>
       </div>
       <div>
@@ -162,20 +132,20 @@ const Debt = props => {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="month" />
-          <YAxis domain={[0, 100000]} />
+          <YAxis />
           <Tooltip />
           <Legend />
           <Bar
             dataKey="assetAccounts[0].amount"
             name="capone"
             stackId="a"
-            fill="#84aad8"
+            fill="#8884d8"
           />
           <Bar
             dataKey="assetAccounts[1].amount"
             name="360"
             stackId="a"
-            fill="#8884d8"
+            fill="#84aad8"
           />
           <Bar
             dataKey="assetAccounts[2].amount"

@@ -13,6 +13,10 @@ class index extends Component {
     };
   }
 
+  toggleMonth = type => {
+    this.setState({ interestSummaryTab: type });
+  };
+
   render() {
     const { interestSummaryTab } = this.state;
     const currentMonth = data && data[data.length - 1];
@@ -67,6 +71,7 @@ class index extends Component {
                 currentBalances={currentBalances}
                 totalInterest={totalInterest}
                 interestSummaryTab={interestSummaryTab}
+                toggleMonth={this.toggleMonth}
               />
             </div>
           </div>
