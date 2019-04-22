@@ -7,6 +7,7 @@ import {
   Tooltip,
   Legend
 } from "recharts";
+import OverviewCard from "./OverviewCard";
 import { numWithCommas } from "../utils/functions";
 import { data } from "../data/data";
 
@@ -39,148 +40,27 @@ const NetWorth = props => {
   return (
     <div>
       <div className="flex mb3">
-        <div className="col-4 center">
-          <div className="border-divider rounded rounded mr1 py3 px2">
-            <h3 className="m0 normal">TOTAL ASSET</h3>
-            <h1 className="mx0 my1 normal">
-              ${numWithCommas(Math.round(props.totalAsset))}
-            </h1>
-            <div className="flex pb2 justify-center">
-              <h4
-                className={`m0 normal ${
-                  props.totalAsset - netWorth[netWorth.length - 2].totalAsset >
-                  0
-                    ? "green"
-                    : "pink"
-                }`}
-              >
-                {props.totalAsset - netWorth[netWorth.length - 2].totalAsset > 0
-                  ? "+"
-                  : ""}$
-                {numWithCommas(
-                  Math.round(
-                    props.totalAsset - netWorth[netWorth.length - 2].totalAsset
-                  )
-                )}
-              </h4>
-              <h4
-                className={`m0 pl1 normal ${
-                  props.totalAsset - netWorth[netWorth.length - 2].totalAsset
-                    ? "pink"
-                    : "green"
-                }`}
-              >
-                [{" "}
-                {props.totalAsset - netWorth[netWorth.length - 2].totalAsset
-                  ? ""
-                  : "+"}
-                {Math.round(
-                  ((props.totalAsset -
-                    netWorth[netWorth.length - 2].totalAsset) /
-                    netWorth[netWorth.length - 2].totalAsset) *
-                    100
-                )}
-                % ]
-              </h4>
-            </div>
-          </div>
-        </div>
-        <div className="col-4 center">
-          <div className="border-divider rounded mx1 py3 px2">
-            <h3 className="m0 normal">TOTAL BALANCE</h3>
-            <h1 className="mx0 my1 normal">
-              ${numWithCommas(Math.round(props.totalBalance))}
-            </h1>
-            <div className="flex pb2 justify-center">
-              <h4
-                className={`m0 normal ${
-                  props.totalBalance - props.previousBalance > 0
-                    ? "pink"
-                    : "green"
-                }`}
-              >
-                {props.totalBalance - props.previousBalance > 0 ? "+" : ""}$
-                {numWithCommas(
-                  Math.round(props.totalBalance - props.previousBalance)
-                )}
-              </h4>
-              <h4
-                className={`m0 pl1 normal ${
-                  props.totalBalance - props.previousBalance > 0
-                    ? "pink"
-                    : "green"
-                }`}
-              >
-                [ {props.totalBalance - props.previousBalance > 0 ? "+" : ""}
-                {Math.round(
-                  ((props.totalBalance - props.previousBalance) /
-                    props.totalBalance) *
-                    100
-                )}
-                % ]
-              </h4>
-            </div>
-          </div>
-        </div>
-        <div className="col-4 center">
-          <div className="border-divider rounded ml1 py3 px2">
-            <h3 className="m0 normal">NET WORTH</h3>
-            <h1 className="mx0 my1 normal">
-              ${numWithCommas(
-                Math.round(netWorth[netWorth.length - 1].netWorth)
-              )}
-            </h1>
-            <div className="flex pb2 justify-center">
-              <h4
-                className={`m0 normal ${
-                  netWorth[netWorth.length - 1].netWorth -
-                    netWorth[netWorth.length - 2].netWorth >
-                  0
-                    ? "green"
-                    : "pink"
-                }`}
-              >
-                {netWorth[netWorth.length - 1].netWorth -
-                  netWorth[netWorth.length - 2].netWorth >
-                0
-                  ? "+"
-                  : ""}$
-                {numWithCommas(
-                  Math.round(
-                    netWorth[netWorth.length - 1].netWorth -
-                      netWorth[netWorth.length - 2].netWorth
-                  )
-                )}
-              </h4>
-              <h4
-                className={`m0 pl1 normal ${
-                  netWorth[netWorth.length - 1].netWorth -
-                  netWorth[netWorth.length - 2].netWorth
-                    ? "pink"
-                    : "green"
-                }`}
-              >
-                [{" "}
-                {netWorth[netWorth.length - 1].netWorth -
-                netWorth[netWorth.length - 2].netWorth
-                  ? ""
-                  : "+"}
-                {Math.round(
-                  ((netWorth[netWorth.length - 1].netWorth -
-                    netWorth[netWorth.length - 2].netWorth) /
-                    netWorth[netWorth.length - 2].netWorth) *
-                    100
-                )}
-                % ]
-              </h4>
-            </div>
-          </div>
-        </div>
+        <OverviewCard
+          header={"TOTAL ASSET"}
+          currentValue={props.totalAsset}
+          prevValue={netWorth[netWorth.length - 2].totalAsset}
+        />
+        <OverviewCard
+          header={"TOTAL BALANCE"}
+          currentValue={props.totalBalance}
+          prevValue={props.previousBalance}
+          invertColors
+        />
+        <OverviewCard
+          header={"NET WORTH"}
+          currentValue={netWorth[netWorth.length - 1].netWorth}
+          prevValue={netWorth[netWorth.length - 2].netWorth}
+        />
       </div>
-      <div>
+      <div className="border-divider rounded mr1 py3 px2">
         <h3 className="normal">Net Worth</h3>
         <LineChart
-          width={700}
+          width={650}
           height={300}
           data={netWorth}
           margin={{
