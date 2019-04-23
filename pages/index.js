@@ -51,6 +51,9 @@ class index extends Component {
       totalAsset += currentMonth.assetAccounts[i].amount;
     }
 
+    console.log(previousBalance);
+    console.log(totalCreditLine);
+
     return (
       <div className="roboto">
         <Header />
@@ -69,6 +72,9 @@ class index extends Component {
               <Summary
                 data={data}
                 currentBalances={currentBalances}
+                totalBalance={totalBalance}
+                previousBalance={previousBalance}
+                totalCreditLine={totalCreditLine}
                 totalInterest={totalInterest}
                 interestSummaryTab={interestSummaryTab}
                 toggleMonth={this.toggleMonth}

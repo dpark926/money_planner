@@ -47,19 +47,30 @@ const Chart = props => {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="month" />
-          <YAxis />
+          <XAxis dataKey="month" tick={{ fill: "gray", fontSize: 12 }} />
+          <YAxis tick={{ fill: "gray", fontSize: 12 }} />
           <Tooltip />
           <Legend />
           <Line
             type="monotone"
             dataKey="netWorth"
             stroke="#0088FE"
+            dot={false}
             strokeWidth={2}
             activeDot={{ r: 8 }}
           />
-          <Line type="monotone" dataKey="totalAsset" stroke="#82ca9d" />
-          <Line type="monotone" dataKey="totalDebt" stroke="#ffb3ba" />
+          <Line
+            type="monotone"
+            dataKey="totalAsset"
+            stroke="#82ca9d"
+            dot={false}
+          />
+          <Line
+            type="monotone"
+            dataKey="totalDebt"
+            stroke="#ffb3ba"
+            dot={false}
+          />
         </LineChart>
       )}
       {chartType === "bar" && (
@@ -75,8 +86,8 @@ const Chart = props => {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="month" />
-          <YAxis domain={yAxisRange} />
+          <XAxis dataKey="month" tick={{ fill: "gray", fontSize: 12 }} />
+          <YAxis domain={yAxisRange} tick={{ fill: "gray", fontSize: 12 }} />
           <Tooltip />
           <Legend />
           {data &&
