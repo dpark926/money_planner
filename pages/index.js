@@ -51,11 +51,8 @@ class index extends Component {
       totalAsset += currentMonth.assetAccounts[i].amount;
     }
 
-    console.log(previousBalance);
-    console.log(totalCreditLine);
-
     return (
-      <div className="roboto">
+      <div className="roboto" style={{ background: "#f6f6f6" }}>
         <Header />
         <div className="mx-auto py3" style={{ width: "1024px" }}>
           <div className="flex">

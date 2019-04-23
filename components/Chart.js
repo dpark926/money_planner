@@ -32,7 +32,7 @@ const Chart = props => {
   }
 
   return (
-    <div className="border-divider rounded mr1 mb3 py3 px2">
+    <div className="border-divider rounded mr1 mb3 py3 px2 bg-white">
       <Title title={props.title} />
       {chartType === "line" && (
         <LineChart

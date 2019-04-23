@@ -1,4 +1,5 @@
 import Title from "./Title";
+import { formatMoney } from "../utils/functions";
 
 const InterestSummary = props => {
   const {
@@ -35,15 +36,17 @@ const InterestSummary = props => {
         return (
           <div className="flex">
             <h4
-              className="h5 uppercase flex-auto px2 mx0 my1 normal"
+              className="h5 uppercase flex-auto px2 mx0 my1 lighter"
               key={idx}
             >{`${account.account}`}</h4>
-            <h4 className="h5 pr2 mx0 my1 normal">{`$ ${account.interest}`}</h4>
+            <h4 className="h5 pr2 mx0 my1 lighter">{`$ ${formatMoney(
+              account.interest
+            )}`}</h4>
           </div>
         );
       })}
       <div className="px2 right-align">
-        <h4 className="h5 gray mx0 my1 normal">Interest Paid Last Month:</h4>
+        <h4 className="h5 gray mx0 my1 lighter">Interest Paid Last Month:</h4>
         <h2 className="mx0 my1 lighter">$ {totalInterest}</h2>
       </div>
     </div>

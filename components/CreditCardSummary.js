@@ -16,7 +16,7 @@ const CreditCardSummary = props => {
       <div className="py1">
         <div className="flex px2">
           <div>
-            <h4 className="h5 uppercase mx0 my1 normal">TOTAL</h4>
+            <h4 className="h5 uppercase mx0 my1 lighter">TOTAL</h4>
           </div>
           <div className="flex-auto right-align">
             <h4 className="lighter m0">
@@ -54,7 +54,7 @@ const CreditCardSummary = props => {
           <div className="py1" key={idx + account}>
             <div className="flex px2">
               <div>
-                <h4 className="h5 uppercase mx0 my1 normal">
+                <h4 className="h5 uppercase mx0 my1 lighter">
                   {account.account}
                 </h4>
               </div>
