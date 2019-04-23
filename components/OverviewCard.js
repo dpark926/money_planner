@@ -1,3 +1,4 @@
+import Title from "./Title";
 import { numWithCommas, changePercent, shouldInvert } from "../utils/functions";
 
 const OverviewCard = props => {
@@ -6,8 +7,8 @@ const OverviewCard = props => {
   return (
     <div className="col-4 center">
       <div className="border-divider rounded mr1 py3 px2">
-        <h4 className="m0 h5 pb1 gray normal border-bottom">{header}</h4>
-        <h2 className="mx0 my1 lighter">
+        <Title title={header} />
+        <h2 className="mx0 my1 lighter pt1">
           ${numWithCommas(Math.round(currentValue))}
         </h2>
         <div className="flex justify-center">

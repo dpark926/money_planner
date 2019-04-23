@@ -1,13 +1,5 @@
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend
-} from "recharts";
 import OverviewCard from "./OverviewCard";
+import Chart from "./Chart";
 import { numWithCommas } from "../utils/functions";
 import { data } from "../data/data";
 
@@ -57,35 +49,7 @@ const NetWorth = props => {
           prevValue={netWorth[netWorth.length - 2].netWorth}
         />
       </div>
-      <div className="border-divider rounded mr1 py3 px2">
-        <h3 className="normal">Net Worth</h3>
-        <LineChart
-          width={650}
-          height={300}
-          data={netWorth}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 0,
-            bottom: 5
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line
-            type="monotone"
-            dataKey="netWorth"
-            stroke="#0088FE"
-            strokeWidth={2}
-            activeDot={{ r: 8 }}
-          />
-          <Line type="monotone" dataKey="totalAsset" stroke="#82ca9d" />
-          <Line type="monotone" dataKey="totalDebt" stroke="#ffb3ba" />
-        </LineChart>
-      </div>
+      <Chart title={"NET WORTH"} data={netWorth} chartType={"line"} />
     </div>
   );
 };

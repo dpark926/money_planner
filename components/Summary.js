@@ -1,3 +1,4 @@
+import Title from "./Title";
 import { numWithCommas, formatMoney } from "../utils/functions";
 
 const Summary = props => {
@@ -10,10 +11,8 @@ const Summary = props => {
 
   return (
     <div className="box-shadow rounded ml3">
-      <div>
-        <div className="p2 light-gray border-bottom">
-          <h3 className="black normal m0">Interest Summary</h3>
-        </div>
+      <div className="mr1 py3 px2">
+        <Title title={"Interest Summary"} />
         <div className="flex mt2 px2 pb1 justify-center">
           <div className="pr2">
             <p
@@ -49,7 +48,7 @@ const Summary = props => {
         })}
         <div className="px2 right-align">
           <h4 className="h5 gray mx0 my1 normal">Interest Paid Last Month:</h4>
-          <h3 className="mx0 my1 normal">$ {totalInterest}</h3>
+          <h2 className="mx0 my1 lighter">$ {totalInterest}</h2>
         </div>
       </div>
       <div>
