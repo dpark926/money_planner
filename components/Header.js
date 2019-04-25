@@ -1,7 +1,7 @@
 const Header = () => {
   return (
-    <div className="px4 normal border-bottom light-gray bg-white">
-      <h2 className="black">Debt Tracker</h2>
+    <div className="px4 border-bottom light-gray bg-white">
+      <h2 className="black lighter green">Debt Tracker</h2>
     </div>
   );
 };

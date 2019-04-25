@@ -15,8 +15,9 @@ const InterestSummary = props => {
       <div className="flex mt2 px2 pb1 justify-center">
         <div className="pr2">
           <p
-            className={`m0 h5 ${interestSummaryTab === "1M" &&
-              "border-bottom"} pointer`}
+            className={`m0 h5 ${
+              interestSummaryTab === "1M" ? "border-bottom black" : "gray"
+            } pointer`}
             onClick={() => toggleMonth("1M")}
           >
             1M
@@ -24,8 +25,9 @@ const InterestSummary = props => {
         </div>
         <div>
           <p
-            className={`m0 h5 ${interestSummaryTab === "12M" &&
-              "border-bottom"} pointer`}
+            className={`m0 h5 ${
+              interestSummaryTab === "12M" ? "border-bottom black" : "gray"
+            } pointer`}
             onClick={() => toggleMonth("12M")}
           >
             12M
