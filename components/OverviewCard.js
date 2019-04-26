@@ -27,7 +27,10 @@ const OverviewCard = props => {
 
   return (
     <div className="col-4 center">
-      <div className="absolute p2 mx2 rounded" style={{ background: color }}>
+      <div
+        className="absolute p2 mx2 rounded box-shadow"
+        style={{ background: color }}
+      >
         {icon}
       </div>
       <div className="border-divider rounded mr1 mt2 py3 px2 bg-white right-align">

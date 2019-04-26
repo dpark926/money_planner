@@ -15,7 +15,7 @@ const Summary = props => {
   } = props;
 
   return (
-    <div className="box-shadow bg-white rounded ml3">
+    <div className="border-divider bg-white rounded ml3 mt2">
       <InterestSummary
         currentBalances={currentBalances}
         totalInterest={totalInterest}

@@ -26,13 +26,6 @@ const Debt = props => {
   return (
     <div>
       <Chart
-        title={"Spendings"}
-        data={data}
-        chartType={"bar"}
-        accountType={"debtAccounts"}
-        dataType="spendings"
-      />
-      <Chart
         title={"Debt"}
         data={data}
         chartType={"bar"}
@@ -47,6 +40,13 @@ const Debt = props => {
         accountType={"debtAccounts"}
         dataType="interest"
         yAxisRange={[0, 600]}
+      />
+      <Chart
+        title={"Spendings"}
+        data={data}
+        chartType={"bar"}
+        accountType={"debtAccounts"}
+        dataType="spendings"
       />
       <Chart
         title={"Assets"}
