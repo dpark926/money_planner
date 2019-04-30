@@ -13,6 +13,7 @@ import "../styles/styles.scss";
 
 const Debt = props => {
   const { data } = props;
+  const year = data.slice(Math.max(data.length - 13, 1));
 
   const COLORS = [
     "#84aad8",
@@ -27,7 +28,7 @@ const Debt = props => {
     <div>
       <Chart
         title={"Debt"}
-        data={data}
+        data={year}
         chartType={"bar"}
         accountType={"debtAccounts"}
         dataType="newBalance"
@@ -35,7 +36,7 @@ const Debt = props => {
       />
       <Chart
         title={"Interest"}
-        data={data}
+        data={year}
         chartType={"bar"}
         accountType={"debtAccounts"}
         dataType="interest"
@@ -43,14 +44,14 @@ const Debt = props => {
       />
       <Chart
         title={"Spendings"}
-        data={data}
+        data={year}
         chartType={"bar"}
         accountType={"debtAccounts"}
         dataType="spendings"
       />
       <Chart
         title={"Assets"}
-        data={data}
+        data={year}
         chartType={"bar"}
         accountType={"assetAccounts"}
         dataType="amount"

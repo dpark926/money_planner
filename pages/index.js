@@ -67,7 +67,6 @@ class index extends Component {
             </div>
             <div className="col-4">
               <Summary
-                data={data}
                 currentBalances={currentBalances}
                 totalBalance={totalBalance}
                 previousBalance={previousBalance}
