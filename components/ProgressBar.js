@@ -5,7 +5,9 @@ const ProgressBar = props => {
     <div className="flex py1 px2 items-center border-bottom light-gray">
       <div className="flex col-8">
         <div
-          className="bg-pink rounded"
+          className={`${
+            100 * (currentBalance / creditLine) > 30 ? "bg-pink" : "bg-orange"
+          } rounded`}
           style={{
             width: Math.round(100 * (currentBalance / creditLine)) + "%",
             height: "10px"
