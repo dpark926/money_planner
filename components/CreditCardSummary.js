@@ -19,12 +19,8 @@ const CreditCardSummary = props => {
             <h4 className="h5 uppercase mx0 my1 lighter">TOTAL</h4>
           </div>
           <div className="flex-auto right-align">
-            <h4 className="lighter m0">
-              <span className="h2">
-                {`$${numWithCommas(Math.round(totalBalance))}`}{" "}
-              </span>
-              / $
-              {numWithCommas(totalCreditLine)}
+            <h4 className="h5 lighter m0 mt1">
+              {`$${numWithCommas(formatMoney(Math.round(totalBalance)))}`}
             </h4>
             <div
               className={`flex pt1 right ${
@@ -59,12 +55,10 @@ const CreditCardSummary = props => {
                 </h4>
               </div>
               <div className="flex-auto right-align">
-                <h4 className="lighter m0">
-                  <span className="h2">
-                    {`$${numWithCommas(Math.round(account.currentBalance))}`}{" "}
-                  </span>
-                  / $
-                  {numWithCommas(account.creditLine)}
+                <h4 className="h5 lighter m0 mt1">
+                  {`$${numWithCommas(
+                    formatMoney(Math.round(account.currentBalance))
+                  )}`}
                 </h4>
                 <div
                   className={`flex pt1 right ${

@@ -2,7 +2,12 @@ import Title from "./Title";
 import AttachMoney from "rmdi/lib/AttachMoney";
 import CreditCard from "rmdi/lib/CreditCard";
 import TrendingUp from "rmdi/lib/TrendingUp";
-import { numWithCommas, changePercent, shouldInvert } from "../utils/functions";
+import {
+  numWithCommas,
+  formatMoney,
+  changePercent,
+  shouldInvert
+} from "../utils/functions";
 
 const OverviewCard = props => {
   const { header, currentValue, prevValue, invertColors } = props;
@@ -47,7 +52,7 @@ const OverviewCard = props => {
             }`}
           >
             {currentValue - prevValue > 0 ? "+" : ""}$
-            {numWithCommas(Math.round(currentValue - prevValue))}
+            {numWithCommas(formatMoney(Math.round(currentValue - prevValue)))}
           </h4>
           <h4
             className={`m0 pl1 h5 lighter ${
