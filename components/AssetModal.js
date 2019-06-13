@@ -1,3 +1,6 @@
+import Lock from "rmdi/lib/Lock";
+import Close from "rmdi/lib/Close";
+
 const AssetModal = props => {
   return (
     <div
@@ -5,10 +8,17 @@ const AssetModal = props => {
       style={{ height: "100%", top: 0, left: 0 }}
     >
       <div
-        className="col-12 bg-white py4 px3 border-divider rounded z2"
-        style={{ maxWidth: "250px" }}
+        className="relative col-12 bg-white pt4 pb3 px3 border-divider rounded z2"
+        style={{ maxWidth: "300px" }}
       >
+        <Close
+          className="absolute pointer hover"
+          size={24}
+          color="gray"
+          style={{ top: "20px", right: "20px" }}
+        />
         <div className="center">
+          <Lock size={64} color="gray" />
           <h2 className="gray">Asset</h2>
         </div>
         <form className="flex flex-column z2">
