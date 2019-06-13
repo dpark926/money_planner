@@ -1,5 +1,14 @@
 @import "./variables";
 
+a {
+  text-decoration: none;
+  color: $light-gray;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .roboto {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
@@ -79,6 +88,10 @@
   background: $red;
 }
 
+.bg-orange {
+  background: $orange;
+}
+
 .bg-pink {
   background: $pink;
 }
@@ -101,6 +114,10 @@
 
 .bg-light-gray {
   background: $light-gray;
+}
+
+.bg-modal {
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .border-divider {
