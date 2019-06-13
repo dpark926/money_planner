@@ -10,7 +10,7 @@ const InterestSummary = props => {
   } = props;
 
   return (
-    <div className="mr1 py3 px2">
+    <div className="mr1 pt3 px2">
       <Title title={"Interest Summary"} />
       <div className="flex mt2 px2 pb1 justify-center">
         <div className="pr2">
@@ -49,7 +49,7 @@ const InterestSummary = props => {
       })}
       <div className="px2 right-align">
         <h4 className="h5 gray mx0 my1 lighter">Interest Paid Last Month:</h4>
-        <h2 className="mx0 my1 lighter">$ {totalInterest}</h2>
+        <h2 className="mx0 my1 lighter">$ {formatMoney(totalInterest)}</h2>
       </div>
     </div>
   );

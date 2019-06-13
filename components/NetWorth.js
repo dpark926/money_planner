@@ -7,9 +7,11 @@ const NetWorth = props => {
   let netWorth = [];
 
   if (data) {
-    for (let i = 0; i < data.length; i++) {
-      const debtsArr = data[i].debtAccounts;
-      const assetsArr = data[i].assetAccounts;
+    const year = data.slice(Math.max(data.length - 13, 1));
+
+    for (let i = 0; i < year.length; i++) {
+      const debtsArr = year[i].debtAccounts;
+      const assetsArr = year[i].assetAccounts;
       let monthlyDebt = 0;
       let monthlyAsset = 0;
 
@@ -21,7 +23,7 @@ const NetWorth = props => {
         monthlyAsset += assetsArr[j].amount;
       }
       netWorth.push({
-        month: data[i].month,
+        month: year[i].month,
         totalAsset: Math.round(monthlyAsset),
         totalDebt: Math.round(monthlyDebt),
         netWorth: Math.round(monthlyAsset - monthlyDebt)
