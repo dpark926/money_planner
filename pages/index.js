@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import Header from "../components/Header";
+import Layout from "../components/Layout";
 import Debt from "../components/Debt";
 import NetWorth from "../components/NetWorth";
 import Summary from "../components/Summary";
@@ -52,34 +52,31 @@ class index extends Component {
     }
 
     return (
-      <div className="roboto" style={{ background: "#f6f6f6" }}>
-        <Header />
-        <div className="mx-auto py3" style={{ width: "1024px" }}>
-          <div className="flex">
-            <div className="col-8">
-              <NetWorth
-                totalBalance={totalBalance}
-                totalCreditLine={totalCreditLine}
-                previousBalance={previousBalance}
-                totalAsset={totalAsset}
-              />
-              <Debt data={data} />
-            </div>
-            <div className="col-4">
-              <Summary
-                data={data}
-                currentBalances={currentBalances}
-                totalBalance={totalBalance}
-                previousBalance={previousBalance}
-                totalCreditLine={totalCreditLine}
-                totalInterest={totalInterest}
-                interestSummaryTab={interestSummaryTab}
-                toggleMonth={this.toggleMonth}
-              />
-            </div>
+      <Layout>
+        <div className="flex">
+          <div className="col-8">
+            <NetWorth
+              totalBalance={totalBalance}
+              totalCreditLine={totalCreditLine}
+              previousBalance={previousBalance}
+              totalAsset={totalAsset}
+            />
+            <Debt data={data} />
+          </div>
+          <div className="col-4">
+            <Summary
+              data={data}
+              currentBalances={currentBalances}
+              totalBalance={totalBalance}
+              previousBalance={previousBalance}
+              totalCreditLine={totalCreditLine}
+              totalInterest={totalInterest}
+              interestSummaryTab={interestSummaryTab}
+              toggleMonth={this.toggleMonth}
+            />
           </div>
         </div>
-      </div>
+      </Layout>
     );
   }
 }

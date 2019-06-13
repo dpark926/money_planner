@@ -1,5 +1,14 @@
 @import "./variables";
 
+a {
+  text-decoration: none;
+  color: $light-gray;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .roboto {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
