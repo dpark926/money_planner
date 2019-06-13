@@ -1,15 +1,17 @@
 import React, { Component, Fragment } from "react";
 import Layout from "../components/Layout";
 import Title from "../components/Title";
+import AssetModal from "../components/AssetModal";
+import CreditModal from "../components/CreditModal";
 import { data } from "../data/data";
 import { numWithCommas, formatMoney } from "../utils/functions";
 import { Months } from "../utils/date";
 import "../styles/styles.scss";
 
 function Accounts() {
-  console.log(data);
   return (
     <Layout>
+      <CreditModal />
       {data &&
         data
           .slice(0)

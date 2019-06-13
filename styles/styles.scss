@@ -89,7 +89,7 @@ a {
 }
 
 .bg-orange {
-  background: orange;
+  background: $orange;
 }
 
 .bg-pink {
@@ -114,6 +114,10 @@ a {
 
 .bg-light-gray {
   background: $light-gray;
+}
+
+.bg-modal {
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .border-divider {
