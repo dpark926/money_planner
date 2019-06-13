@@ -1,18 +1,35 @@
 import React, { Component, Fragment } from "react";
 import Layout from "../components/Layout";
 import Title from "../components/Title";
-import AssetModal from "../components/AssetModal";
-import CreditModal from "../components/CreditModal";
+import Modal from "../components/Modal";
 import { data } from "../data/data";
 import { numWithCommas, formatMoney } from "../utils/functions";
 import { Months } from "../utils/date";
 import "../styles/styles.scss";
 
 class accounts extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
+  toggleModal = (type, accnt) => {
+    const { modalOpen } = this.state;
+    this.setState({ modalType: type, modalOpen: !modalOpen, accnt });
+  };
+
   render() {
+    const { modalType, modalOpen, accnt } = this.state;
+
     return (
       <Layout>
-        <CreditModal />
+        {modalOpen && (
+          <Modal
+            modalType={modalType}
+            toggleModal={this.toggleModal}
+            accnt={accnt}
+          />
+        )}
         {data &&
           data
             .slice(0)
@@ -29,7 +46,10 @@ class accounts extends Component {
                   <div className="flex">
                     <div className="bg-white border-divider rounded mr1 py3 px2 col-4">
                       <Title title="Assets" />
-                      <h4 className="border-divider rounded h5 lighter center pointer m2 py1 px2">
+                      <h4
+                        className="border-divider rounded bg-green hover white h5 lighter center pointer m2 py1 px2"
+                        onClick={() => this.toggleModal("assets")}
+                      >
                         Add New
                       </h4>
                       <div className="mx2">
@@ -45,10 +65,15 @@ class accounts extends Component {
                                 </h4>
                               </div>
                               <div className="flex mx2 my1">
-                                <h4 className="center h6 pointer my0 mr1 p1 col-6 lighter border-divider rounded">
+                                <h4
+                                  className="center h6 pointer my0 mr1 p1 col-6 lighter border-divider rounded bg-blue hover white"
+                                  onClick={() =>
+                                    this.toggleModal("assets", accnt)
+                                  }
+                                >
                                   Edit
                                 </h4>
-                                <h4 className="center h6 pointer my0 ml1 p1 col-6 lighter border-divider rounded">
+                                <h4 className="center h6 pointer my0 ml1 p1 col-6 lighter border-divider rounded bg-gray hover white">
                                   Delete
                                 </h4>
                               </div>
@@ -59,7 +84,10 @@ class accounts extends Component {
                     </div>
                     <div className="bg-white border-divider rounded ml1 py3 px2 col-8">
                       <Title title="Credit Cards" />
-                      <h4 className="border-divider rounded h5 lighter center pointer m2 py1 px2">
+                      <h4
+                        className="border-divider rounded bg-green hover white h5 lighter center pointer m2 py1 px2"
+                        onClick={() => this.toggleModal("credit")}
+                      >
                         Add New
                       </h4>
                       <div className="mx2">
@@ -71,10 +99,15 @@ class accounts extends Component {
                                   {accnt.name}
                                 </h4>
                                 <div className="flex mb2">
-                                  <h4 className="center h6 pointer my0 mr1 p1 col-6 lighter border-divider rounded">
+                                  <h4
+                                    className="center h6 pointer my0 mr1 p1 col-6 lighter border-divider rounded bg-blue hover white"
+                                    onClick={() =>
+                                      this.toggleModal("credit", accnt)
+                                    }
+                                  >
                                     Edit
                                   </h4>
-                                  <h4 className="center h6 pointer my0 ml1 p1 col-6 lighter border-divider rounded">
+                                  <h4 className="center h6 pointer my0 ml1 p1 col-6 lighter border-divider rounded bg-gray hover white">
                                     Delete
                                   </h4>
                                 </div>
