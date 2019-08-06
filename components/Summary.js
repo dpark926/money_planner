@@ -10,8 +10,7 @@ const Summary = props => {
     previousBalance,
     totalCreditLine,
     totalInterest,
-    interestSummaryTab,
-    toggleMonth
+    data
   } = props;
 
   return (
@@ -19,8 +18,7 @@ const Summary = props => {
       <InterestSummary
         currentBalances={currentBalances}
         totalInterest={totalInterest}
-        interestSummaryTab={interestSummaryTab}
-        toggleMonth={toggleMonth}
+        data={data}
       />
       <CreditCardSummary
         currentBalances={currentBalances}

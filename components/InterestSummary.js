@@ -1,13 +1,32 @@
+import { useState } from "react";
 import Title from "./Title";
-import { formatMoney } from "../utils/functions";
+import { formatMoney, numWithCommas } from "../utils/functions";
 
 const InterestSummary = props => {
-  const {
-    currentBalances,
-    totalInterest,
-    interestSummaryTab,
-    toggleMonth
-  } = props;
+  const { currentBalances, totalInterest, data } = props;
+  const [interestSummaryTab, setinterestSummaryTab] = useState("1M");
+  const year = data.slice(Math.max(data.length - 13, 1));
+
+  const toggleMonth = type => {
+    setinterestSummaryTab(type);
+  };
+
+  let lastYearInterestSummary = {};
+  let lastYearTotalInterst = 0;
+
+  for (let i = 0; i < year.length; i++) {
+    const month = year[i];
+    for (let j = 0; j < month.debtAccounts.length; j++) {
+      const account = month.debtAccounts[j];
+      if (lastYearInterestSummary[account.name]) {
+        lastYearInterestSummary[account.name] += account.interest;
+        lastYearTotalInterst += account.interest;
+      } else {
+        lastYearInterestSummary[account.name] = account.interest;
+        lastYearTotalInterst += account.interest;
+      }
+    }
+  }
 
   return (
     <div className="mr1 pt3 px2">
@@ -34,22 +53,44 @@ const InterestSummary = props => {
           </p>
         </div>
       </div>
-      {currentBalances.map((account, idx) => {
-        return (
-          <div className="flex">
-            <h4
-              className="h5 uppercase flex-auto px2 mx0 my1 lighter"
-              key={idx}
-            >{`${account.account}`}</h4>
-            <h4 className="h5 pr2 mx0 my1 lighter">{`$ ${formatMoney(
-              account.interest
-            )}`}</h4>
-          </div>
-        );
-      })}
+      {interestSummaryTab === "1M"
+        ? currentBalances.map((account, idx) => {
+            return (
+              <div className="flex">
+                <h4
+                  className="h5 uppercase flex-auto px2 mx0 my1 lighter"
+                  key={idx}
+                >{`${account.account}`}</h4>
+                <h4 className="h5 pr2 mx0 my1 lighter">{`$ ${numWithCommas(
+                  formatMoney(account.interest)
+                )}`}</h4>
+              </div>
+            );
+          })
+        : Object.keys(lastYearInterestSummary).map((account, idx) => {
+            return (
+              <div className="flex">
+                <h4
+                  className="h5 uppercase flex-auto px2 mx0 my1 lighter"
+                  key={idx}
+                >{`${account}`}</h4>
+                <h4 className="h5 pr2 mx0 my1 lighter">{`$ ${numWithCommas(
+                  formatMoney(lastYearInterestSummary[account])
+                )}`}</h4>
+              </div>
+            );
+          })}
       <div className="px2 right-align">
-        <h4 className="h5 gray mx0 my1 lighter">Interest Paid Last Month:</h4>
-        <h2 className="mx0 my1 lighter">$ {formatMoney(totalInterest)}</h2>
+        <h4 className="h5 gray mx0 my1 lighter">
+          Interest Paid Last{" "}
+          {interestSummaryTab === "1M" ? "Month" : "12 Months"}:
+        </h4>
+        <h2 className="mx0 my1 lighter">
+          ${" "}
+          {interestSummaryTab === "1M"
+            ? numWithCommas(formatMoney(totalInterest))
+            : numWithCommas(formatMoney(lastYearTotalInterst))}
+        </h2>
       </div>
     </div>
   );

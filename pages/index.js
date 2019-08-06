@@ -8,14 +8,8 @@ import { data } from "../data/data";
 class index extends Component {
   constructor() {
     super();
-    this.state = {
-      interestSummaryTab: "1M"
-    };
+    this.state = {};
   }
-
-  toggleMonth = type => {
-    this.setState({ interestSummaryTab: type });
-  };
 
   render() {
     const { interestSummaryTab } = this.state;
@@ -71,8 +65,6 @@ class index extends Component {
               previousBalance={previousBalance}
               totalCreditLine={totalCreditLine}
               totalInterest={totalInterest}
-              interestSummaryTab={interestSummaryTab}
-              toggleMonth={this.toggleMonth}
             />
           </div>
         </div>
